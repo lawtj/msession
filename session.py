@@ -105,7 +105,7 @@ with two:
         st.plotly_chart(px.histogram(encounter, x='age_at_encounter', title='Age distribution', text_auto=True))
     with tab4:
         monk_selected = st.selectbox('Measurement location', ['monk_forehead', 'monk_fingernail', 'monk_dorsal'])
-        st.plotly_chart(px.histogram(encounter, x=encounter[f'{monk_selected}'], title='Monk Forehead', text_auto=True))
+        st.plotly_chart(px.histogram(encounter.sort_values(monk_selected, inplace=True), x=encounter[f'{monk_selected}'], title=monk_selected, text_auto=True).update_xaxes(title=""))
     with tab5:
         st.plotly_chart(px.histogram(patient, x='bmi', title='BMI distribution', text_auto=True))
 # st.write(konica)
